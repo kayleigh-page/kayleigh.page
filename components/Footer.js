@@ -112,7 +112,19 @@ export default function Footer() {
         </div>
         <div className="md:w-2/6 md:mb-0 mb-30">
           <h2 className="text-4xl md:mb-6 mb-4 text-center">Blog posts</h2>
-          <p className="text-center text-lg">Blog coming soon!</p>
+          <p className="text-center text-lg">
+            Blog coming soon!<br />
+            (Follow my progress on the backend {" "}
+            <Link
+              href="https://github.com/kayleigh-page/blogger"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-gray-400"
+            >
+              here
+            </Link>
+            ).
+          </p>
           {/*<div>
             <BlogPost
               url="/blog/1"
