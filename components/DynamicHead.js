@@ -1,37 +1,35 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Suspense } from "react";
-import React from "react";
-
-const headMap = [
-  {
-    match: (pathname) => pathname === "/",
-    load: () => import("../app/CustomHead"),
-  },/*
-  {
-    match: (pathname) => pathname === "/page-a",
-    load: () => import("../app/page-a/CustomHead"),
-  },
-  {
-    match: (pathname) => pathname.startsWith("/blog/"),
-    load: () => import("../app/blog/[slug]/CustomHead"),
-  },*/
-];
+import { useEffect, useState } from "react";
 
 export function DynamicHead() {
   const pathname = usePathname();
+  const [HeadComponent, setHeadComponent] = useState(null);
 
-  for (const entry of headMap) {
-    if (entry.match(pathname)) {
-      const HeadComponent = React.lazy(entry.load);
-      return (
-        <Suspense fallback={null}>
-          <HeadComponent />
-        </Suspense>
-      );
+  useEffect(() => {
+    async function loadHead() {
+      if (pathname === "/") {
+        const mod = await import("../app/CustomHead");
+        setHeadComponent(() => mod.default);
+      } else if (pathname === "/terms") {
+        const mod = await import("../app/terms/CustomHead");
+        setHeadComponent(() => mod.default);
+      } else if (pathname === "/privacy") {
+        const mod = await import("../app/privacy/CustomHead");
+        setHeadComponent(() => mod.default);
+      }/* else if (pathname.startsWith("/blog/")) {
+        const mod = await import("./blog/[slug]/CustomHead");
+        setHeadComponent(() => mod.default);
+      }*/ else {
+        setHeadComponent(null);
+      }
     }
-  }
 
-  return null;
+    loadHead();
+  }, [pathname]);
+
+  if (!HeadComponent) return null;
+
+  return <HeadComponent />;
 }
