@@ -1,5 +1,9 @@
+import Cookies from "js-cookie";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 
@@ -8,17 +12,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const consent = Cookies.get("userConsent");
+
   return (
     <html lang="en">
       <head>
-        <title>{metadata.title}</title>
+        {consent === "accepted" && <GoogleAnalytics />}
+
+        {/*<title>{metadata.title}</title>*/}
       </head>
-      <body
-        className={`antialiased`}
-      >
+      <body className={`antialiased`}>
         <Navbar />
         {children}
         <Footer />
+        <CookieConsentBanner />
       </body>
     </html>
   );
