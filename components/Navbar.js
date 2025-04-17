@@ -79,8 +79,8 @@ export default function Navbar() {
       <div className="hidden flex-grow sm:flex items-center justify-start transition duration-200">
         <div className="flex gap-0">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/portfolio">Portfolio</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
+          {/*<NavLink href="/portfolio">Portfolio</NavLink>
+          <NavLink href="/blog">Blog</NavLink>*/}
         </div>
       </div>
       {/*<Link

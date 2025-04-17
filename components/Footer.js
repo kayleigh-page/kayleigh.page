@@ -51,7 +51,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-950 text-white md:pt-0 pt-0 md:mt-50 mt-10">
+    <footer className="bg-gray-950 text-white text-lg md:pt-0 pt-0 md:mt-50 mt-10">
       {/*<footer className="bg-gray-900 text-white md:pt-60 pt-30 md:mt-50 mt-10">*/}
       {/*<div className="md:p-20 p-6 max-w-4xl text-center md:mx-auto mx-5 bg-gray-800 rounded-2xl">
         <div className="max-w-2xl mx-auto">
@@ -167,7 +167,7 @@ export default function Footer() {
           <p className="mt-0">
             Fingerprint:*/}
             <br />
-            <span className="text-sm">
+            <span className="md:text-lg text-sm">
               9DF1 4FA8 B4A8 597D 7C5E F6B7 6EF2 AED6 AF1A CE39
             </span>
           </p>
@@ -179,7 +179,7 @@ export default function Footer() {
         </div>
         <div className="md:w-1/6 md:pb-0 pb-30 text-center">
           <h2 className="text-4xl md:mb-6 mb-4">Follow me</h2>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={linkedin}
@@ -190,7 +190,7 @@ export default function Footer() {
               LinkedIn
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={github}
@@ -201,7 +201,7 @@ export default function Footer() {
               GitHub
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={bluesky}
@@ -212,7 +212,7 @@ export default function Footer() {
               Bluesky
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={twitter}
@@ -223,7 +223,7 @@ export default function Footer() {
               Twitter
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={instagram}
@@ -234,7 +234,7 @@ export default function Footer() {
               Instagram
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={facebook}
@@ -245,7 +245,7 @@ export default function Footer() {
               Facebook
             </a>
           </p>
-          <p>
+          <p className="mb-1">
             <a
               className="hover:text-gray-400 text-lg"
               href={googleDevelopers}
