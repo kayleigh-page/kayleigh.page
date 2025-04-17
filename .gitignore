@@ -1,10 +1,3 @@
-.env*
-private.md
-node_modules/
-package-lock.json
-sw.js
-workbox-*.js
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -16,7 +9,6 @@ workbox-*.js
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-package-lock.json
 
 # testing
 /coverage
