@@ -90,7 +90,7 @@ export default function Home() {
             alt="Kayleigh Page"
             width={750}
             height={750}
-            className="w-full h-auto md:rounded-xl hover:rounded-full"
+            className="w-full h-auto md:rounded-xl hover:rounded-full shadow-2xl"
             priority={true}
           />
         </div>
@@ -109,7 +109,7 @@ export default function Home() {
             Expert <span className="text-pink-500">★</span> Brand Builder{" "}
             <span className="text-pink-500">★</span> Coach
           </h2>
-          <h3 className="rounded-md md:text-4xl text-xl bg-pink-500 text-white hover:bg-white hover:text-gray-700 md:pt-2 md:pb-4 py-2 w-full md:mb-8 mb-6">
+          <h3 className="rounded-md md:text-4xl text-xl bg-pink-500 text-white hover:bg-white hover:text-gray-700 md:pt-2 md:pb-4 py-2 w-full md:mb-8 mb-6 shadow-2xl">
             Helping your brand succeed since 2008.
           </h3>
           {/*<p className="md:text-2xl text-xl hover:bg-gray-700 hover:text-white md:py-2 md:w-full">
@@ -117,7 +117,7 @@ export default function Home() {
           </p>*/}
         </div>
       </div>
-      <div className="md:gap-2 md:p-15 md:pt-38 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 text-center mx-auto md:flex text-gray-700 md:bg-white bg-gray-100">
+      <div className="md:gap-2 md:p-15 md:pt-38 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 text-center mx-auto md:flex text-gray-700 md:bg-white bg-gray-50">
         <div className="md:w-2/5 md:content-center md:p-0 p-2">
           <h2 className="text-5xl md:mb-6 mb-5">Who am I?</h2>
           <p className="md:text-2xl text-xl md:mx-auto mb-3">
@@ -147,7 +147,7 @@ export default function Home() {
             width={325}
             height={325}
             loading="lazy"
-            className="w-full h-auto md:rounded-full hover:rounded-xl"
+            className="w-full h-auto md:rounded-full hover:rounded-xl shadow-2xl"
           />
         </div>
         <div className="md:w-2/5 md:content-center md:p-0 p-2">
@@ -192,7 +192,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-100">
+      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-50">
           <h2 className="text-6xl md:mb-6 mb-5">Blog posts</h2>
           <p className="max-w-6xl mx-auto md:text-2xl text-xl mb-2">
             Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo.{" "}
@@ -231,7 +231,7 @@ export default function Home() {
             </Link>
           </p>
         </div>*/}
-      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-100">
+      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-50">
           <h2 className="text-6xl md:mb-6 mb-5">My work</h2>
           <p className="max-w-6xl mx-auto md:text-2xl text-xl mb-2">
             Check out some of my projects. I&apos;ve worked for startups,
@@ -273,7 +273,7 @@ export default function Home() {
             </Link>
           </p>
         </div>*/}
-      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-100">
+      {/*<div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-50">
           <h2 className="text-6xl md:mb-6 mb-5">Testimonials</h2>
           <p className="max-w-6xl mx-auto md:text-2xl text-xl mb-2">
             Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo. Todo.{" "}
@@ -305,7 +305,7 @@ export default function Home() {
             />
           </div>
         </div>*/}
-      <div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-100">
+      <div className="md:p-15 md:pt-18 md:mb-0 mb-20 md:mt-18 md:pb-18 pt-20 pb-20 mt-20 px-2 text-center mx-auto text-gray-700 md:bg-white bg-gray-50">
         <h2 className="text-6xl md:mb-6 mb-5">My skills</h2>
         <p className="max-w-6xl mx-auto md:text-2xl text-xl mb-2">
           <strong>Expert in:</strong> PHP, JavaScript, Next.js, React, React
