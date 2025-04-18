@@ -15,6 +15,12 @@ const facebook = "https://facebook.com/kayleigh.page.developer";
 const googleDevelopers = "https://g.dev/kayleigh-page";
 
 export default function Footer() {
+  // States for adding a new newsletter subscriber
+  const [subscriberEmail, setSubscriberEmail] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // My email in useEffect so it doesn't get picked up by crawlers
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -22,6 +28,58 @@ export default function Footer() {
     const domain = "abs.gd";
     setEmail(`${user}@${domain}`);
   }, []);
+
+  /*
+   * ADD A NEWSLETTER SUBSCRIBER
+   ******************************/
+  // GraphQL mutation to add a new subscriber.
+  // This function is called when the form is submitted.
+  const handleAddSubscriber = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const query = `
+      mutation addNewsletterSubscriber($email: String!, $siteId: String!, $userId: String) {
+        addNewsletterSubscriber(email: $email, siteId: $siteId, userId: $userId) {
+          id
+          email
+          siteId
+          userId
+        }
+      }
+    `;
+    const variables = {
+      email: subscriberEmail,
+      siteId: "67fe5e6c03af06f40020435d",
+      userId: "67fe51cfafc0900118ba2523",
+    };
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+        body: JSON.stringify({ query, variables }),
+      });
+
+      const json = await response.json();
+      if (json.errors) {
+        throw new Error(json.errors[0].message);
+      } else {
+        // Reset form fields after successful submission
+        setSubscriberEmail("");
+        mutate();
+      }
+    } catch (error) {
+      console.error(error);
+      setError("An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const BlogPost = ({ url, title, description, image }) => {
     const router = useRouter();
@@ -51,9 +109,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-950 text-white text-lg md:pt-0 pt-0 md:mt-50 mt-10">
+    <footer className="bg-gray-950 text-white text-lg md:pt-60 pt-30 md:mt-50 mt-10">
       {/*<footer className="bg-gray-900 text-white md:pt-60 pt-30 md:mt-50 mt-10">*/}
-      {/*<div className="md:p-20 p-6 max-w-4xl text-center md:mx-auto mx-5 bg-gray-800 rounded-2xl">
+      <div className="md:p-20 p-6 max-w-4xl text-center md:mx-auto mx-5 bg-gray-800 rounded-2xl shadow-2xl">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-5xl md:mb-6 mb-2 text-center">Hear it first</h2>
           <p className="mb-6 md:text-xl text-lg">
@@ -61,37 +119,50 @@ export default function Footer() {
             behind the scenes, opportunities, discounts, future courses,
             availabilty, ...
           </p>
-          <form>
+          <form onSubmit={handleAddSubscriber}>
             <input
-              className="w-full h-12 bg-white mb-2 hover:bg-gray-100 text-gray-700 p-2 text-center"
+              className="w-full h-12 bg-white mb-2 hover:bg-gray-100 text-gray-700 p-2 text-center shadow-2xl"
               type="email"
               id="email"
               name="email"
               autoComplete="on"
+              onChange={(e) => setSubscriberEmail(e.target.value)}
+              value={subscriberEmail}
+              required
+              aria-label="Your email address"
               placeholder="Your email address"
             />
             <div className="flex md:gap-4 gap-2 items-center text-start md:text-md text-md mb-2">
               <input
-                className="md:w-7 md:h-7 w-5 h-5 accent-green-500 cursor-pointer"
+                className="md:w-7 md:h-7 w-5 h-5 accent-green-500 cursor-pointer shadow-2xl"
                 type="checkbox"
                 id="consent"
                 name="consent"
                 value="agree"
                 required
+                aria-label="I consent to receiving newsletters and promotional emails from Kayleigh Page. I understand that my personal data will be processed in accordance with the Privacy Policy."
               />
               <label for="consent" className="cursor-pointer w-full">
-                I consent to receiving newsletters and promotional emails
-                from Kayleigh Page.
+                I consent to receiving newsletters and promotional emails from
+                Kayleigh Page.
                 <br /> I understand that my personal data will be processed in
-                accordance with the <a href="/privacy" className="underline">Privacy Policy</a>.
+                accordance with the{" "}
+                <a href="/privacy" className="underline">
+                  Privacy Policy
+                </a>
+                .
               </label>
             </div>
-            <button className="w-full h-12 bg-gray-600 cursor-pointer hover:bg-gray-500 text-xl">
-              Subscribe
+            <button
+              className="w-full h-12 bg-gray-600 cursor-pointer hover:bg-gray-500 text-xl shadow-2xl"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Subscribing ..." : "Subscribe"}
             </button>
           </form>
         </div>
-      </div>*/}
+      </div>
       <div className="md:flex md:pb-60 md:pt-60 md:p-20 px-2 pt-30 md:gap-10">
         <div className="md:w-2/6 md:mb-0 mb-30">
           <h2 className="text-4xl md:mb-6 mb-4 text-center">Kayleigh Page</h2>
@@ -113,8 +184,9 @@ export default function Footer() {
         <div className="md:w-2/6 md:mb-0 mb-30">
           <h2 className="text-4xl md:mb-6 mb-4 text-center">Blog posts</h2>
           <p className="text-center text-lg">
-            Blog coming soon!<br />
-            (Follow my progress on the backend {" "}
+            Blog coming soon!
+            <br />
+            (Follow my progress on the backend{" "}
             <Link
               href="https://github.com/kayleigh-page/blogger"
               target="_blank"
