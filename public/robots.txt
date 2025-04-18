@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /404
+Disallow: /privacy
+Disallow: /terms
+
+Allow: /
+
+Sitemap: https://kayleigh.page/sitemap.xml
